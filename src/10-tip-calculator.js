@@ -30,5 +30,18 @@
  * @returns {{ tipPercentage: number, tipAmount: number, totalAmount: number } | null}
  */
 export function calculateTip(billAmount, serviceRating) {
-  // Your code here
+  let tipAmounts = 0, totalAmounts = 0, tipPercentage = 0;
+  if(billAmount <= 0) return null;
+  if(serviceRating === 1) tipPercentage += 5;
+  else if (serviceRating === 2) tipPercentage += 10;
+  else if (serviceRating === 3) tipPercentage += 15;
+  else if (serviceRating === 4) tipPercentage += 20;
+  else if (serviceRating === 5) tipPercentage += 25;
+  else return null;
+
+  tipAmounts = (tipPercentage/100)*billAmount;
+  totalAmounts = billAmount + tipAmounts
+  const tipAmount = tipAmounts
+  const totalAmount = totalAmounts
+  return {tipPercentage, tipAmount, totalAmount}
 }
